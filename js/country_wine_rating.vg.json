@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": "Wine Rating by Country (2025)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/main/data/wine_prod_clean.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"title": "", "labelAngle": -40} 
+    },
+    "y": {
+        "field": "AvRating",
+        "type": "quantitative"
+    },
+    "color": {
+      "condition": {
+        "test": "datum.Country === 'Australia'",
+        "value": "#1f77b4"  
+      },
+      "value": "#555555"
+    },
+    "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "AvRating", "type": "quantitative"},
+        {"field": "Vineyards", "type": "quantitative"},
+        {"field": "WineProduced", "type": "quantitative"}
+    ]
+  }
+}
