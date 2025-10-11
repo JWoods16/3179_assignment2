@@ -1,0 +1,17 @@
+.center-text {
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.inner img {
+  height: 40vh
+}
