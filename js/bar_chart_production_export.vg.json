@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 350,
+  "data": {
+    "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_happiness.csv"
+  },
+  "transform": [
+    {"filter": "datum.Year == 2022"},
+    {"filter": "datum.Element == 'Production' || datum.Element == 'Export quantity'"},
+    {"filter": {"field": "Area", "oneOf":["Australia","Italy","France","Spain","United States of America","Chile","United Kingdom","China","Germany","Belgium","Canada"]}},
+    {"calculate": "datum.Element == 'Production' ? 'Wine Not Exported' : 'Wine Exported'",
+"as": "WineStatus"}
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "Area",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"title": "", "labelAngle": -40}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Value",
+      "type": "quantitative",
+      "axis": {"title": "Wine Quantity (Mhl)"}
+    },
+    "color": {
+      "field": "WineStatus",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Wine Not Exported", "Wine Exported"],
+        "range": ["darkblue", "lightblue"]
+      },
+      "legend": {"title": "Wine Measure"}
+    },
+    "tooltip": [
+      {"field": "Area", "title": "Country"},
+      {"field": "WineStatus", "title": "Wine Status"},
+      {"aggregate": "sum", "field": "Value", "title": "Quantity (Mhl)"}
+    ]
+  },
+  "title": "Wine Production vs Export Quantity by Country (2022)"
+}
