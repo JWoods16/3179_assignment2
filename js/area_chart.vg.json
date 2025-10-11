@@ -1,0 +1,151 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_data_by_year.csv"
+    },
+    "vconcat": [
+        {
+            "width":600,
+            "height": 400,
+            "title":"Australian Share of Global Wine Exports (million hl)",
+            "layer": [
+                {
+                    "transform": [
+                        {
+                            "filter": "datum.Element === 'Export quantity'"
+                        },
+                        {"calculate": "'Global'", "as": "Country"},
+                        {"filter": {"param": "time_brush"}}
+                    ],
+                    "mark": "area",
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "timeUnit": "year",
+                            "axis": {
+                                "title": "",
+                                "tickCount": 5,
+                                "grid": false
+                            }
+                        },
+                        "y": {
+                            "aggregate": "sum",
+                            "field": "Value",
+                            "title": "Total Wine Exported Globally"
+                        },
+                        "color":{"field":"Country", "type": "nominal", "legend": {"title": "Region"}},
+                        "tooltip": [
+                            {
+                                "field": "Year",
+                                "type": "temporal",
+                                "timeUnit": "year",
+                                "title": "Year",
+                                "format": "%Y"
+                            },
+                            {
+                                "aggregate": "sum",
+                                "field": "Value",
+                                "type": "quantitative",
+                                "title": "Worldwide Wine Exported (million hl)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": "datum.Element === 'Export quantity'"
+                        },
+                        {
+                            "filter": "datum.Area === 'Australia'"
+                        },
+                        {
+                            "filter": "isValid(datum.Value)"
+                        },
+                        {"calculate": "'Australia'", "as": "Country"},
+                        {"filter": {"param": "time_brush"}}
+                    ],
+                    "mark": {
+                        "type": "area",
+                        "color": "#08519c",
+                        "opacity": 0.8
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "Year",
+                            "timeUnit": "year"
+                        },
+                        "y": {
+                            "aggregate": "sum",
+                            "field": "Value",
+                            "title": "Total Wine Exported (million hl)"
+                        },
+                        "color":{"field":"Country", "type": "nominal", "scale": {"domain": ["Global", "Australia"], "range": ["#add8e6", "#08306b"]},"legend": {"title": "Region"}},
+                        "tooltip": [
+                            {
+                                "field": "Year",
+                                "type": "temporal",
+                                "timeUnit": "year",
+                                "title": "Year",
+                                "format": "%Y"
+                            },
+                            {
+                                "field": "Value",
+                                "type": "quantitative",
+                                "title": "Australian Wine Exported (million hl)"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "width": 600,
+            "height": 80,
+            "title": "Use this line chart to filter data based on time",
+            "params": [
+                {
+                    "name": "time_brush",
+                    "select": {"type": "interval", "encodings": ["x"]}
+                }
+            ],
+            "transform": [
+                {
+                    "filter": "datum.Element === 'Export quantity'"
+                }
+            ],
+            "mark":{
+                "type": "line"
+            },
+            "encoding": {
+                "x": {
+                    "field": "Year",
+                    "timeUnit": "year",
+                    "axis": {"title": "", "format": "%Y"}
+                },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Value",
+                    "title": "Wine Exported",
+                    "scale": {"domain": [5000, 12000]}
+                },
+                "tooltip": [
+                    {
+                                "field": "Year",
+                                "type": "temporal",
+                                "timeUnit": "year",
+                                "title": "Year",
+                                "format": "%Y"
+                            },
+{
+                                "aggregate": "sum",
+                                "field": "Value",
+                                "type": "quantitative",
+                                "title": "Worldwide Wine Exported (million hl)"
+                            }
+
+                ]
+            }
+        }
+    ]
+}
