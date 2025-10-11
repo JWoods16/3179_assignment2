@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_happiness.csv"
+  },
+  "width":600,
+  "height":400,
+  "transform": [
+    {"filter": "datum.Area == 'Australia'"},
+    {"filter": {"field": "Area", "oneOf": ["Australia","Italy","France","Spain","United States of America","Chile","United Kingdom","China","Germany","Belgium","Canada"]}},
+    {"filter": "datum.Element == 'Production' || datum.Element == 'Export quantity'"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "axis": {"title": "Year"}},
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "scale": {"domain": [0, 1500]},
+          "axis": {"title": "Wine Quantity (Mhl)"}
+        },
+        "color": {
+          "field": "Element",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Production", "Export quantity"],
+            "range": ["lightblue", "darkblue"]
+          },
+          "legend": {"title": "Wine Measure"}
+        },
+        "strokeDash": {
+          "field": "Element",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Production", "Export quantity"],
+            "range": [[], [4, 3]]
+          },
+          "legend": null
+        },
+        "tooltip": [
+            {"field": "Element", "title":"Form"},
+          {"field": "Year","type": "temporal","timeUnit": "year","title": "Year","format": "%Y"},
+          {"field": "Value", "title": "Quantity (Mhl)"}
+        ]
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}},
+  "title": "Australia: Wine Production vs Export Quantity (2010–2022)"
+}
