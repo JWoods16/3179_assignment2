@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "hconcat": [
+    {
+      "height": 400,
+      "width": 600,
+      "title": "Australia Wine Export Quantity vs Leading Country's Wine Export Quantity (Mhl)",
+      "data": {
+        "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_data_by_year.csv"
+      },
+      "transform": [
+        {"filter": {"field": "Area","oneOf": ["Australia","Italy","France","Spain","United States of America","Chile","United Kingdom","China","Germany","Belgium","Canada"]}},
+        {"calculate": "datum.Area == 'Australia' ? 'Australia' : 'Other'", "as": "HighlightGroup"}
+      ],
+      "layer": [
+        {
+          "mark":{"type": "line", "strokeWidth":3},
+          "encoding": {
+            "x": {"field": "Year","timeUnit": "year","axis": {"title": "", "format": "%Y"}},
+            "y": {"field": "Value","type": "quantitative","title": "Wine Exported (Mhl)"},
+            "color": {"field": "HighlightGroup","scale": {"domain": ["Australia","Other"],"range": ["#1f77b4","lightgray"]},"title": "Country"},
+            "detail": {"field": "Area"},
+            "tooltip": [
+              {"field": "Area","type": "nominal","title": "Country"},
+              {"field": "Year","type": "temporal","timeUnit": "year","title": "Year","format": "%Y"},
+              {"field": "Value","type": "quantitative","title": "Wine Exported (million hl)"}
+            ]
+          }
+        },
+        {
+          "transform": [
+            {"filter": "datum.Area == 'Australia'"},
+            {"aggregate": [{"op": "max","field": "Value","as": "maxValue"}]},
+            {"lookup": "maxValue","from": {"data": {"url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_data_by_year.csv"},"key": "Value","fields": ["Year","Area","Value"]}},
+            {"calculate": "'Peak export: ' + year(datum.Year) + ' — ' + format(datum.Value, '.2f') + ' Mhl'","as": "label"}
+          ],
+          "layer": [
+            {"mark": {"type": "point","filled": true,"color": "#1f77b4","size": 100},"encoding": {"x": {"field": "Year","type": "temporal"},"y": {"field": "Value","type": "quantitative"}}},
+            {"mark": {"type": "text","align": "left","dx": 5,"dy": -15,"fontSize": 14,"fontWeight": "bold","color": "black"},"encoding": {"x": {"field": "Year","type": "temporal"},"y": {"field": "Value","type": "quantitative"},"text": {"field": "label"}}}
+          ]
+        }
+      ]
+    },
+    {
+      "width": 400,
+      "height": 400,
+      "title": "Total Wine Exports by Country",
+      "data": {
+        "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_data_by_year.csv"
+      },
+      "transform": [
+        {"filter": {"field": "Area","oneOf": ["Australia","Italy","France","Spain","United States of America","Chile","United Kingdom","China","Germany","Belgium","Canada"]}},
+        {"aggregate": [{"op": "sum","field": "Value","as": "TotalExports"}],"groupby": ["Area"]},
+        {"calculate": "datum.Area == 'Australia' ? 'Australia' : 'Other'", "as": "HighlightGroup"}
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "Area","type": "nominal","sort": "-y", "title": "Country","axis": {"title": "", "labelAngle": -40}},
+        "y": {"field": "TotalExports","type": "quantitative","title": "Total Exports (Mhl)"},
+        "color": {"field": "HighlightGroup","scale": {"domain": ["Australia","Other"],"range": ["#1f77b4","lightgray"]},"legend": null},
+        "tooltip": [
+          {"field": "Area","type": "nominal","title": "Country"},
+          {"field": "TotalExports","type": "quantitative","title": "Total Exports (Mhl)"}
+        ]
+      }
+    }
+  ]
+}
