@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "description": "Scatter plot of Domestic Supply Quantity vs Life Ladder for 2022 with annotation on Australia",
+  "data": {
+    "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_happiness.csv"
+  },
+  "transform": [
+    {"filter": "datum.Element === 'Domestic supply quantity' && datum.Year == 2022"},
+    {"filter": "datum.Value > 150 && datum['Life Ladder'] > 0"}
+  ],
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "x": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "Domestic Supply Quantity (million hL)"
+        },
+        "y": {
+          "field": "Life Ladder",
+          "type": "quantitative",
+          "title": "Life Ladder",
+          "scale": {"domain": [4.5, 8]}
+        },
+        "color": {
+          "field": "Area",
+          "type": "nominal",
+          "scale": {"scheme": "category20"}
+        },
+        "tooltip": [
+          {"field": "Area", "type": "nominal"},
+          {"field": "Value", "type": "quantitative", "title": "Domestic Supply Quantity (million hL)"},
+          {"field": "Life Ladder", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.Area == 'Australia'"},
+        {
+          "calculate": "'Australia: ' + format(datum.Value, '.1f') + ' million hL'",
+          "as": "label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": 0,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"field": "Value", "type": "quantitative"},
+        "y": {"field": "Life Ladder", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}
