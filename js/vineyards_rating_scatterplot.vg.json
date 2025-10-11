@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "title": "Vineyard land (sqm) by Wine Quality per Country (2025)", 
+  "data": {
+    "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/main/data/wine_prod_clean.csv"
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+        "field": "Vineyards",
+        "type": "quantitative",
+      "title":"Land Dedicated to Vineyards (sqm)"},
+    "y": {
+        "field": "AvRating",
+        "type": "quantitative",
+        "scale": {"domain": [60, 100]}},
+    "color": {
+        "field": "Country",
+        "type": "nominal",
+        "scale": {"scheme": "category20"}
+    },
+    "size" : {
+        "field": "WineProduced",
+        "type": "quantitative",
+        "title": "Wine Produced (million hcl)"
+    },
+    "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "AvRating", "type": "quantitative"},
+        {"field": "Vineyards", "type": "quantitative", "title": "Land Dedicated to Vineyards (sqm)"},
+        {"field": "WineProduced", "type": "quantitative", "title": "Wine Produced (million hcl)"}
+    ]
+  }
+}
