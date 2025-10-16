@@ -16,20 +16,21 @@
     },
     "y": {
         "field": "AvRating",
-        "type": "quantitative"
+        "type": "quantitative",
+        "title":"Wine Average Rating"
     },
     "color": {
       "condition": {
         "test": "datum.Country === 'Australia'",
         "value": "#1f77b4"  
       },
-      "value": "#555555"
+      "value": "lightgrey"
     },
     "tooltip": [
         {"field": "Country", "type": "nominal"},
-        {"field": "AvRating", "type": "quantitative"},
-        {"field": "Vineyards", "type": "quantitative"},
-        {"field": "WineProduced", "type": "quantitative"}
+        {"field": "AvRating", "type": "quantitative", "title": "Wine Average Rating"},
+        {"field": "Vineyards", "type": "quantitative", "title":"Land dedicated to Vineyards (hectares)"},
+        {"field": "WineProduced", "type": "quantitative", "title":"Total Wine Produced (million hcl)"}
     ]
   }
 }
