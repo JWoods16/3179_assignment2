@@ -30,7 +30,7 @@
         {"field": "Country", "type": "nominal"},
         {"field": "AvRating", "type": "quantitative", "title": "Wine Average Rating"},
         {"field": "Vineyards", "type": "quantitative", "title":"Land dedicated to Vineyards (hectares)"},
-        {"field": "WineProduced", "type": "quantitative", "title":"Total Wine Produced (million hcl)"}
+        {"field": "WineProduced", "type": "quantitative", "title":"Total Wine Produced (Mhl)"}
     ]
   }
 }
