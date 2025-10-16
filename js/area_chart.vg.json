@@ -7,7 +7,7 @@
         {
             "width":600,
             "height": 400,
-            "title":"Australian Share of Global Wine Exports (million hl)",
+            "title":"Australian Share of Global Wine Exports (Mhl)",
             "layer": [
                 {
                     "transform": [
@@ -46,7 +46,7 @@
                                 "aggregate": "sum",
                                 "field": "Value",
                                 "type": "quantitative",
-                                "title": "Worldwide Wine Exported (million hl)"
+                                "title": "Worldwide Wine Exported (Mhl)"
                             }
                         ]
                     }
@@ -78,7 +78,7 @@
                         "y": {
                             "aggregate": "sum",
                             "field": "Value",
-                            "title": "Total Wine Exported (million hl)"
+                            "title": "Total Wine Exported (Mhl)"
                         },
                         "color":{"field":"Country", "type": "nominal", "scale": {"domain": ["Global", "Australia"], "range": ["#add8e6", "#08306b"]},"legend": {"title": "Region"}},
                         "tooltip": [
@@ -92,7 +92,7 @@
                             {
                                 "field": "Value",
                                 "type": "quantitative",
-                                "title": "Australian Wine Exported (million hl)"
+                                "title": "Australian Wine Exported (Mhl)"
                             }
                         ]
                     }
@@ -126,7 +126,7 @@
                 "y": {
                     "aggregate": "sum",
                     "field": "Value",
-                    "title": "Wine Exported",
+                    "title": "Wine Exported (Mhl)",
                     "scale": {"domain": [5000, 12000]}
                 },
                 "tooltip": [
@@ -141,7 +141,7 @@
                                 "aggregate": "sum",
                                 "field": "Value",
                                 "type": "quantitative",
-                                "title": "Worldwide Wine Exported (million hl)"
+                                "title": "Worldwide Wine Exported (Mhl)"
                             }
 
                 ]
