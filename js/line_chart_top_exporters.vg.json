@@ -23,7 +23,7 @@
             "tooltip": [
               {"field": "Area","type": "nominal","title": "Country"},
               {"field": "Year","type": "temporal","timeUnit": "year","title": "Year","format": "%Y"},
-              {"field": "Value","type": "quantitative","title": "Wine Exported (million hl)"}
+              {"field": "Value","type": "quantitative","title": "Wine Exported (Mhl)"}
             ]
           }
         },
