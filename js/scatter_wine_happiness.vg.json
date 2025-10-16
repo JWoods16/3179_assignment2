@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 600,
   "height": 400,
-  "description": "Scatter plot of Domestic Supply Quantity vs Life Ladder for 2022 with annotation on Australia",
+  "title": "Domestic Wine Supply (Mhl) vs Country Happiness (2022)",
   "data": {
     "url": "https://raw.githubusercontent.com/JWoods16/3179_assignment2/refs/heads/main/data/wine_happiness.csv"
   },
@@ -17,7 +17,7 @@
         "x": {
           "field": "Value",
           "type": "quantitative",
-          "title": "Domestic Supply Quantity (million hL)"
+          "title": "Domestic Supply Quantity (Mhl)"
         },
         "y": {
           "field": "Life Ladder",
@@ -32,7 +32,7 @@
         },
         "tooltip": [
           {"field": "Area", "type": "nominal"},
-          {"field": "Value", "type": "quantitative", "title": "Domestic Supply Quantity (million hL)"},
+          {"field": "Value", "type": "quantitative", "title": "Domestic Supply Quantity (Mhl)"},
           {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score"}
         ]
       }
@@ -41,7 +41,7 @@
       "transform": [
         {"filter": "datum.Area == 'Australia'"},
         {
-          "calculate": "'Australia: ' + format(datum.Value, '.1f') + ' million hL'",
+          "calculate": "'Australia: ' + format(datum.Value, '.1f') + ' Mhl'",
           "as": "label"
         }
       ],
