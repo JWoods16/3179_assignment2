@@ -25,14 +25,14 @@
     "size" : {
         "field": "WineProduced",
         "type": "quantitative",
-        "title": "Wine Produced (million hcl)",
+        "title": "Wine Produced (Mhl)",
         "scale": {"range": [100, 300]}
     },
     "tooltip": [
         {"field": "Country", "type": "nominal"},
         {"field": "AvRating", "type": "quantitative", "title": "Wine Average Rating"},
         {"field": "Vineyards", "type": "quantitative", "title": "Land Dedicated to Vineyards (hectares)"},
-        {"field": "WineProduced", "type": "quantitative", "title": "Wine Produced (million hcl)"}
+        {"field": "WineProduced", "type": "quantitative", "title": "Wine Produced (Mhl)"}
     ]
   }
 }
