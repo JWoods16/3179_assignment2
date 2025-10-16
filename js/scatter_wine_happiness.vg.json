@@ -12,7 +12,7 @@
   ],
   "layer": [
     {
-      "mark": "circle",
+      "mark": {"type":"circle", "size":100},
       "encoding": {
         "x": {
           "field": "Value",
@@ -22,7 +22,7 @@
         "y": {
           "field": "Life Ladder",
           "type": "quantitative",
-          "title": "Life Ladder",
+          "title": "Happiness Score",
           "scale": {"domain": [4.5, 8]}
         },
         "color": {
@@ -33,7 +33,7 @@
         "tooltip": [
           {"field": "Area", "type": "nominal"},
           {"field": "Value", "type": "quantitative", "title": "Domestic Supply Quantity (million hL)"},
-          {"field": "Life Ladder", "type": "quantitative"}
+          {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score"}
         ]
       }
     },
@@ -56,7 +56,7 @@
       },
       "encoding": {
         "x": {"field": "Value", "type": "quantitative"},
-        "y": {"field": "Life Ladder", "type": "quantitative"},
+        "y": {"field": "Life Ladder", "type": "quantitative", "title": "Happiness Score"},
         "text": {"field": "label"}
       }
     }
