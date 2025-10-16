@@ -15,7 +15,6 @@
     <style>
         div+div {
             margin-top: 60px;
-            /* subtle gap between sections */
         }
     </style>
 
@@ -25,30 +24,25 @@
 <body>
     <div style="text-align: center;">
         <h1>AUSTRALIAN WINE VS THE WORLD</h1>
-        <h3>METADATA:</h3>
-        <p><strong>Date:</strong> 02/10/2025</p>
-        <p><strong>Author:</strong> Jake Woods</p>
-        <p><strong>Data Sources:</strong>
-            <a href="https://www.kaggle.com/datasets/jainaru/world-happiness-report-2024-yearly-updated">World Happiness
-                Report 2024</a> |
-            <a href="https://www.fao.org/faostat/en/?utm_source=chatgpt.com#search/wine">FAOSTAT</a> |
-            <a href="https://www.kaggle.com/datasets/mohamedkhaledmahmoud/the-best-wine-producers-in-the-world">Wine
-                Producers</a>
-        </p>
     </div>
 
 
-    <div style ="text-align: center;">
+    <div style="text-align: center;">
         <h2>AUSTRALIAN WINE</h2>
         <p>Australian wine, originating from places such as South Australia and the Mornington Peninsula in Victoria,
-            are throughly enjoyed by locals for it's richness and quality.</p>
-        <p>However, how renowned is Australian wine in the global wine market? This data visualization attempts to
-            understand Australia's wine making skills in the global market and where Australia ranks amongst world's premium winemakers.</p>
+            are <span class="blue-text">throughly enjoyed by locals for it's richness and quality.</span></p>
+        <p>However, how renowned is Australian wine in the global wine market?
+            This data visualization attempts to
+            <span class="blue-text">understand Australia's wine making skills in the global market</span>
+            and
+            <span class="blue-text">where Australia ranks amongst world's premium winemakers.</span>
+        </p>
+
     </div>
 
     <div style="text-align: center;">
         <h2>AUSTRALIAN WINE PRODUCERS VS THE WORLD</h2>
-        
+
         <div id="scatter_plot"></div>
         <script type="text/javascript">
 
@@ -66,29 +60,41 @@
                 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             }).catch(console.error);
         </script>
-        <p>Australia's wine is rated quite highly amongst other countries, ranked 6th in wine quality. This is despite Australia only utilizing 145,000 square metres of it's land to vineyards, which is a very small
-            amount of land dedicated to making wine, in comparison to the leading winemakers in the world such as Italy, France, and Spain.</p>
+        <p>
+            Australia's wine is rated quite highly amongst other countries,
+            <span class="blue-text">ranked 6th in wine quality.</span>
+            This is despite
+            <span class="blue-text">Australia only utilizing 145,000 hectares of its land to vineyards</span>,
+            which is a very small amount of land dedicated to making wine, in comparison to
+            <span class="blue-text">the leading winemakers in the world such as Italy, France, and Spain.</span>
+        </p>
     </div>
-        <div style="text-align: center;">
-            <h2>AUSTRALIA IN THE GLOBAL WINE MARKET</h2>
+    <div style="text-align: center;">
+        <h2>AUSTRALIA IN THE GLOBAL WINE MARKET</h2>
         <div id="choropleth_wine_export"></div>
         <script type="text/javascript">
             var spec2 = "js/choropleth_wine_export_2022.vg.json";
-            vegaEmbed('#choropleth_wine_export', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#choropleth_wine_export', spec2).then(function (result) { }).catch(console.error);
         </script>
-        <p>Despite Australia only utilizing a small amount of it's land for vineyards in comparison to other countries, Australia ranked 5th globally
-            for total wine exported in 2022 with roughly 644 million hectolitres of wine exported from Australian vineyards.
+        <p>Despite Australia only utilizing a small amount of it's land for vineyards in comparison to other countries,
+            <span class="blue-text">Australia ranked 5th globally</span>
+            for total wine exported in 2022 with roughly
+            <span class="blue-text">
+                644 million hectolitres of wine exported </span>from Australian
+            vineyards.
         </p>
         <div id="area_chart"></div>
         <script type="text/javascript">
             var spec2 = "js/area_chart.vg.json";
-            vegaEmbed('#area_chart', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#area_chart', spec2).then(function (result) { }).catch(console.error);
         </script>
         <p>
-            Overtime, it shows that Australia's contribution to wine exports globally has stayed around the 9% mark, peaking in 2015. 
+            Overtime, it shows that Australia's contribution to wine exports globally has stayed <span
+                class="blue-text"> around the 9% mark </span>,
+            peaking in 2015.
         </p>
         <p>
-            Noticably, Australia's wine exports have decreased in recent years.
+            Noticably, Australia's wine <span class="blue-text"> exports have decreased in recent years.</span>
         </p>
         <p>
 
@@ -98,39 +104,52 @@
         <div id="line_top_exports"></div>
         <script type="text/javascript">
             var spec2 = "js/line_chart_top_exporters.vg.json";
-            vegaEmbed('#line_top_exports', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#line_top_exports', spec2).then(function (result) { }).catch(console.error);
         </script>
 
         <p>
-            Australia ranks strongly in wine exports in comparison to other countries. Hovering between 4th and 5th for Wine export quantity, generally swapping places with Chile.
-            Australia firmly holds a position between the leaders, such as France, Italy, and Spain, and the rest of the world. 
+            Australia ranks strongly in wine exports in comparison to other countries.
+            Hovering <span class="blue-text">between 4th and 5th for
+                Wine export quantity </span>, generally swapping places with Chile.
+            Australia firmly holds a position between the leaders, such as France, Italy, and Spain, and the rest of the
+            world.
         </p>
     </div>
 
     <div style="text-align: center;">
         <h2>WINE PRODUCED AND WINE EXPORTED</h2>
-        
+
         <div id="line_prod_export"></div>
         <script type="text/javascript">
             var spec2 = "js/line_production_export.vg.json";
-            vegaEmbed('#line_prod_export', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#line_prod_export', spec2).then(function (result) { }).catch(console.error);
         </script>
         <div id="bar_prod_export"></div>
         <script type="text/javascript">
             var spec2 = "js/bar_chart_production_export.vg.json";
-            vegaEmbed('#bar_prod_export', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#bar_prod_export', spec2).then(function (result) { }).catch(console.error);
         </script>
 
         <p>
-            Most wine produced by Australia has not been exported in recent years. There seems to be a trend of Australia retaining most of it's wine, rather than exporting to the rest of the world.
-            While peaking in 2016 in terms of percentage of wine produced that was exported, there has been a wider gap growing, with Australia looking to retain it's wine produced.
+            Most wine produced by Australia has not been exported in recent years. There seems to be a trend of
+            <span class="blue-text"> Australia retaining most of it's wine</span>, rather than exporting to the rest of
+            the world.
+            While peaking in 2016 in terms of percentage of wine produced that was exported, there has been a <span
+                class="blue-text">wider gap
+                growing</span> , with Australia looking to retain it's wine produced.
         </p>
         <p>
-            Australia still maintains similar rankings with it's wine making rival, Chile, but has moved down a position when accounting for total wine produced as the US produces more wine, but exports
+            Australia still <span class="blue-text"> maintains similar rankings </span>with it's wine making rival,
+            Chile, but has moved down a position
+            when accounting for total wine produced as the US produces more wine, but exports
             only a small amount of it.
         </p>
         <p>
-            In general, Australia maintains its position below the top performers, but well above the rest in the middle of the pack when it comes to wine in the global market.
+            In general,
+
+            <span class="blue-text"> Australia maintains its position below the top performers, but well above the rest
+                in the middle
+                of the pack </span>when it comes to wine in the global market.
         </p>
     </div>
 
@@ -139,17 +158,29 @@
         <div id="scatter_wine_happiness"></div>
         <script type="text/javascript">
             var spec2 = "js/scatter_wine_happiness.vg.json";
-            vegaEmbed('#scatter_wine_happiness', spec2).then(function (result){}).catch(console.error);
+            vegaEmbed('#scatter_wine_happiness', spec2).then(function (result) { }).catch(console.error);
         </script>
-    
+
         <p>
-            Australia, despite only exporting 33% of it's total wine produced, still has a relatively high happiness rating. 
-            Therefore, Australia might not need to push for more of a presence in the global wine market. If the wine is so good, and results in higher happiness, than why not keep it for ourselves. 
+            Australia, despite only <span class="blue-text"> exporting 33% of it's total wine produced</span>, still has
+            a relatively high happiness
+            rating.
+            Therefore, Australia might not need to push for more of a presence in the global wine market. If the wine is
+            so good, and results in higher happiness, than why not keep it for ourselves.
         </p>
     </div>
-    <p>
-        
-    </p>
 
+    <div style="text-align: center;">
+        <h4>METADATA:</h4>
+        <p><strong>Date:</strong> 02/10/2025 | <strong>Author:</strong> Jake Woods | <strong>Data Sources:</strong>
+            <a href="https://www.kaggle.com/datasets/jainaru/world-happiness-report-2024-yearly-updated">World
+                Happiness
+                Report 2024</a> |
+            <a href="https://www.fao.org/faostat/en/?utm_source=chatgpt.com#search/wine">FAOSTAT</a> |
+            <a href="https://www.kaggle.com/datasets/mohamedkhaledmahmoud/the-best-wine-producers-in-the-world">Wine
+                Producers</a>
+        </p>
+    </div>
 </body>
+
 </html>
