@@ -59,11 +59,11 @@
           "field": "Value",
           "type": "quantitative",
           "scale": {"scheme": "blues"},
-          "legend": {"title": "Wine Exported (million hl)"}
+          "legend": {"title": "Wine Exported (Mhl)"}
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "Value", "type": "quantitative", "title": "Wine Exported (million hl)"}
+          {"field": "Value", "type": "quantitative", "title": "Wine Exported (Mhl)"}
         ]
       }
     },
