@@ -41,5 +41,5 @@
       {"aggregate": "sum", "field": "Value", "title": "Quantity (Mhl)"}
     ]
   },
-  "title": "Wine Production vs Export Quantity by Country (2022)"
+  "title": "Wine Production vs Export Quantity (Mhl) by Country (2022)"
 }
